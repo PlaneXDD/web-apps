@@ -1,0 +1,20 @@
+/* External styles */
+body 
+{
+    font-family: Arial, sans-serif;
+}
+
+/* Styling for the table */
+table 
+{
+    border-collapse: collapse;
+    width: 50%;
+    margin: 20px auto;
+}
+
+th, td 
+{
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
