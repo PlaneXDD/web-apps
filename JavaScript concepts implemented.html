@@ -11,132 +11,67 @@
 
     <h1>JavaScript Concepts Demo</h1>
 
-    <button onclick="displayResults()">Click to see results in console</button>
+    <button onclick="displayResults()">Click to see results</button>
+
+    <div id="results"></div>
 
     <script>
-        // a. String methods
-        function demonstrateStringMethods() {
-            var str = "Hello, world!";
-            console.log("Original String: ", str);
+        function displayResults() {
+            let output = "";
 
-            // 1. toUpperCase()
-            console.log("Uppercase: ", str.toUpperCase());
+            // a. String methods
+            let str = "Hello, world!";
+            output += "<h2>String Methods</h2>";
+            output += `<p>Original String: ${str}</p>`;
+            output += `<p>Uppercase: ${str.toUpperCase()}</p>`;
+            output += `<p>Index of 'world': ${str.indexOf("world")}</p>`;
+            output += `<p>Slice from 0 to 5: ${str.slice(0, 5)}</p>`;
+            output += `<p>Replace 'world' with 'universe': ${str.replace("world", "universe")}</p>`;
+            output += `<p>Split by ',': ${str.split(",")}</p>`;
 
-            // 2. indexOf()
-            console.log("Index of 'world': ", str.indexOf("world"));
+            // b. Number methods
+            let num = 123.4567;
+            output += "<h2>Number Methods</h2>";
+            output += `<p>Original Number: ${num}</p>`;
+            output += `<p>With two decimals: ${num.toFixed(2)}</p>`;
+            output += `<p>With 5 precision: ${num.toPrecision(5)}</p>`;
+            output += `<p>Number as string: ${num.toString()}</p>`;
+            output += `<p>Value of number: ${num.valueOf()}</p>`;
+            output += `<p>parseInt('123abc'): ${parseInt("123abc")}</p>`;
 
-            // 3. slice()
-            console.log("Slice from 0 to 5: ", str.slice(0, 5));
-
-            // 4. replace()
-            console.log("Replace 'world' with 'universe': ", str.replace("world", "universe"));
-
-            // 5. split()
-            console.log("Split by ',': ", str.split(","));
-        }
-
-        // b. Number methods
-        function demonstrateNumberMethods() {
-            var num = 123.4567;
-            console.log("Original Number: ", num);
-
-            // 1. toFixed()
-            console.log("With two decimals: ", num.toFixed(2));
-
-            // 2. toPrecision()
-            console.log("With 5 precision: ", num.toPrecision(5));
-
-            // 3. toString()
-            console.log("Number as string: ", num.toString());
-
-            // 4. valueOf()
-            console.log("Value of number: ", num.valueOf());
-
-            // 5. parseInt()
-            console.log("parseInt('123abc'): ", parseInt("123abc"));
-        }
-
-        // c. Array methods
-        function demonstrateArrayMethods() {
-            var arrStr = ["apple", "banana", "cherry"];
-            var arrNum = [5, 15, 2, 8, 10];
-
-            // 1. push()
+            // c. Array methods
+            let arrStr = ["apple", "banana", "cherry"];
+            let arrNum = [5, 15, 2, 8, 10];
+            output += "<h2>Array Methods</h2>";
             arrStr.push("date");
-            console.log("After push(): ", arrStr);
-
-            // 2. pop()
+            output += `<p>After push(): ${arrStr}</p>`;
             arrStr.pop();
-            console.log("After pop(): ", arrStr);
+            output += `<p>After pop(): ${arrStr}</p>`;
+            output += `<p>Sort number array: ${arrNum.sort()}</p>`;
+            let filtered = arrNum.filter(num => num > 5);
+            output += `<p>Numbers greater than 5: ${filtered}</p>`;
+            output += `<p>String array joined: ${arrStr.join("-")}</p>`;
 
-            // 3. sort()
-            console.log("Sort number array: ", arrNum.sort());
+            // d. Date methods
+            let date = new Date();
+            output += "<h2>Date Methods</h2>";
+            output += `<p>Original Date: ${date}</p>`;
+            output += `<p>Full Year: ${date.getFullYear()}</p>`;
+            output += `<p>Month (0-11): ${date.getMonth()}</p>`;
+            output += `<p>Day of month: ${date.getDate()}</p>`;
+            output += `<p>Day of week (0-6): ${date.getDay()}</p>`;
+            output += `<p>Local Time String: ${date.toLocaleTimeString()}</p>`;
 
-            // 4. filter()
-            var filtered = arrNum.filter(num => num > 5);
-            console.log("Numbers greater than 5: ", filtered);
-
-            // 5. join()
-            console.log("String array joined: ", arrStr.join("-"));
-        }
-
-        // d. Date methods
-        function demonstrateDateMethods() {
-            var date = new Date();
-            console.log("Original Date: ", date);
-
-            // 1. getFullYear()
-            console.log("Full Year: ", date.getFullYear());
-
-            // 2. getMonth()
-            console.log("Month (0-11): ", date.getMonth());
-
-            // 3. getDate()
-            console.log("Day of month: ", date.getDate());
-
-            // 4. getDay()
-            console.log("Day of week (0-6): ", date.getDay());
-
-            // 5. toLocaleTimeString()
-            console.log("Local Time String: ", date.toLocaleTimeString());
-        }
-
-        // e. Function Methods
-        function demonstrateFunctionMethods() {
+            // e. Function Methods
             function greet(name) {
                 return "Hello, " + name + "!";
             }
+            output += "<h2>Function Methods</h2>";
+            output += `<p>Function apply(): ${greet.apply(null, ["Alice"])}</p>`;
+            let greetJohn = greet.bind(null, "John");
+            output += `<p>Function bind(): ${greetJohn()}</p>`;
 
-            // 1. apply()
-            console.log("Function apply(): ", greet.apply(null, ["Alice"]));
-
-            // 2. bind()
-            var greetJohn = greet.bind(null, "John");
-            console.log("Function bind(): ", greetJohn());
-        }
-
-        function displayResults() {
-            console.clear();
-
-            console.group("String Methods");
-            demonstrateStringMethods();
-            console.groupEnd();
-
-            console.group("Number Methods");
-            demonstrateNumberMethods();
-            console.groupEnd();
-
-            console.group("Array Methods");
-            demonstrateArrayMethods();
-            console.groupEnd();
-
-            console.group("Date Methods");
-            demonstrateDateMethods();
-            console.groupEnd();
-
-            console.group("Function Methods");
-            demonstrateFunctionMethods();
-            console.groupEnd();
+            document.getElementById("results").innerHTML = output;
         }
     </script>
 </body>
