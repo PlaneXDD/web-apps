@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue 3 Conditional Rendering with User Interaction</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Buttons to toggle conditions -->
+    <button @click="toggleMessage">Toggle Message</button>
+    <button @click="toggleShow">Toggle Show</button>
+
+    <!-- v-if and v-else -->
+    <div v-if="showMessage">Hello, World!</div>
+    <div v-else>No message to show.</div>
+    
+    <!-- v-show -->
+    <div v-show="alwaysShow">This is always shown.</div>
+    
+    <!-- v-for and v-if with v-for -->
+    <ul>
+      <li v-for="item in items" :key="item.id">
+        {{ item.name }}
+        <span v-if="item.isAvailable"> - Available</span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const app = Vue.createApp
+    (
+      {
+      data() {
+        return {
+          showMessage: true,
+          alwaysShow: true,
+          items: 
+          [
+            { id: 1, name: 'Apple', isAvailable: true },
+            { id: 2, name: 'Banana', isAvailable: false },
+          ],
+        };
+      },
+      methods: {
+        toggleMessage() 
+        {
+          this.showMessage = !this.showMessage;
+        },
+        toggleShow() {
+          this.alwaysShow = !this.alwaysShow;
+        }
+      }
+    }
+    );
+    app.mount('#app');
+  </script>
+</body>
+</html>

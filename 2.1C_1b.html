@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue 3 Form Input Handling</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="formApp">
+    <!-- v-model -->
+    <input type="text" v-model="username" />
+    <p>Your username is: {{ username }}</p>
+  </div>
+
+  <script>
+    const formApp = Vue.createApp({
+      data() {
+        return {
+          username: '',
+        };
+      },
+    });
+    formApp.mount('#formApp');
+  </script>
+</body>
+</html>

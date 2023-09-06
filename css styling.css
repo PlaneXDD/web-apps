@@ -1,20 +1,71 @@
-/* External styles */
-body 
-{
-    font-family: Arial, sans-serif;
+/* General Styles */
+body {
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
 
-/* Styling for the table */
-table 
-{
-    border-collapse: collapse;
-    width: 50%;
-    margin: 20px auto;
+/* Container */
+#todoApp {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-th, td 
-{
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
+/* Input and Button */
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 11px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Todo List */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #f9f9f9;
+}
+
+/* Delete Button */
+button.delete {
+  background-color: #ff4d4d;
+}
+
+button.delete:hover {
+  background-color: #cc0000;
 }

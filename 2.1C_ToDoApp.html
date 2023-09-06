@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo App</title>
+  <link rel="stylesheet" type="text/css" href="css/styling.css">
+</head>
+<body>
+  <div id="todoApp">
+    <input type="text" v-model="newTodo" @keyup.enter="addTodo" />
+    <button @click="addTodo">Add</button>
+    
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">
+        {{ todo.text }}
+        <button class="delete" @click="deleteTodo(todo.id)" v-if="todo.completed">Delete</button>
+        <button @click="markCompleted(todo.id)" v-else>Mark as Completed</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Vue 3 -->
+  <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+  <script>
+    const todoApp = Vue.createApp({
+      data() {
+        return {
+          newTodo: '',
+          todos: [],
+        };
+      },
+      methods: {
+        addTodo() {
+          this.todos.push({ id: Date.now(), text: this.newTodo, completed: false });
+          this.newTodo = '';
+        },
+        deleteTodo(id) {
+          this.todos = this.todos.filter(todo => todo.id !== id);
+        },
+        markCompleted(id) {
+          const todo = this.todos.find(todo => todo.id === id);
+          todo.completed = true;
+        },
+      },
+    });
+    todoApp.mount('#todoApp');
+  </script>
+</body>
+</html>
