@@ -2,74 +2,88 @@ document.addEventListener('DOMContentLoaded', function() {
     const app = Vue.createApp({
         data() {
             return {
-                developer: {
+                developer: 
+                {
                     name: 'Thien Phu',
                     dob: '2002-02-02',
                     address: 'Melbourn'
                 },
-                courseModules: [
+                courseModules: 
+                    [
                     { title: "Introduction to HTML", description: "Learn the basics of HTML." },
                     { title: "Introduction to CSS", description: "Dive into the world of styling." },
                     // Add more course modules here
-                ],
+                    ],
                 skills: ['HTML', 'CSS', 'JavaScript'],
-                projects: [
+                projects: 
+                    [
                     { title: "Project 1", description: "Description of project 1" },
                     { title: "Project 2", description: "Description of project 2" }
                     // Add more projects here
-                ],
-                feedbackItems: [
+                    ],
+                feedbackItems: 
+                    [
                     {
                         name: 'John',
                         email: 'john@example.com',
                         message: 'Great website!'
                     }
                     // Add more feedback items here
-                ],
-                contact: {
+                    ],
+                contact: 
+                {
                     phone: '+04123456789',
                     email: 'developer@email.com'
                 },
                 progressPercentage: 50,
                 newSkill: '',
-                newProject: {
+                newProject: 
+                {
                     title: '',
                     description: ''
                 },
-                newFeedback: {
+                newFeedback: 
+                {
                     name: '',
                     email: '',
                     message: ''
                 },
-                newMilestone: {
+                newMilestone: 
+                {
                     title: '',
                     description: ''
                 }
             };
         },
-        methods: {
-            saveDeveloperInfo() {
+        methods: 
+        {
+            saveDeveloperInfo() 
+            {
                 console.log('Developer info saved!');
             },
-            editMilestone(module) {
+            editMilestone(module) 
+            {
                 const newTitle = prompt("Edit milestone title:", module.title);
                 if (newTitle) module.title = newTitle;
                 
                 const newDescription = prompt("Edit milestone description:", module.description);
                 if (newDescription) module.description = newDescription;
             },
-            editSkill(index) {
+            editSkill(index) 
+            {
                 const newSkill = prompt("Edit skill:", this.skills[index]);
                 if (newSkill) this.skills[index] = newSkill;
             },
-            editProject(project) {
+            editProject(project) 
+            {
                 const newTitle = prompt("Edit project title:", project.title);
                 if (newTitle) project.title = newTitle;
                 
                 const newDescription = prompt("Edit project description:", project.description);
                 if (newDescription) project.description = newDescription;
             },
-            editFeedback(index) {
+            editFeedback(index) 
+            {
                 const feedbackItem = this.feedbackItems[index];
                 const newName = prompt("Edit feedback name:", feedbackItem.name);
                 if (newName) feedbackItem.name = newName;
@@ -80,28 +94,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 const newMessage = prompt("Edit feedback message:", feedbackItem.message);
                 if (newMessage) feedbackItem.message = newMessage;
             },
-            editContact() {
+            editContact() 
+            {
                 const newPhone = prompt("Edit contact phone:", this.contact.phone);
                 if (newPhone) this.contact.phone = newPhone;
 
                 const newEmail = prompt("Edit contact email:", this.contact.email);
                 if (newEmail) this.contact.email = newEmail;
             },
-            submitFeedback() {
+            submitFeedback() 
+            {
                 console.log(`Feedback from ${this.feedback.name}: ${this.feedback.message}`);
                 this.feedback = { name: '', email: '', message: '' };
             },
-            backToTop() {
+            backToTop() 
+            {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             },
-            addSkill() {
-                if (this.newSkill.trim() !== '') {
+            addSkill() 
+            {
+                if (this.newSkill.trim() !== '') 
+                {
                     this.skills.push(this.newSkill);
                     this.newSkill = '';
                 }
             },
-            addProject() {
-                if (this.newProject.title.trim() !== '' && this.newProject.description.trim() !== '') {
+            addProject() 
+            {
+                if (this.newProject.title.trim() !== '' && this.newProject.description.trim() !== '') 
+                {
                     this.projects.push({
                         title: this.newProject.title,
                         description: this.newProject.description
@@ -110,35 +131,44 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.newProject.description = '';
                 }
             },
-            addFeedback() {
-                if (
+            addFeedback() 
+            {
+                if 
+                    (
                     this.newFeedback.name.trim() !== '' &&
                     this.newFeedback.email.trim() !== '' &&
                     this.newFeedback.message.trim() !== ''
-                ) {
-                    this.feedbackItems.push({
+                ) 
+                {
+                    this.feedbackItems.push
+                        ({
                         name: this.newFeedback.name,
                         email: this.newFeedback.email,
                         message: this.newFeedback.message
-                    });
+                        });
                     this.newFeedback.name = '';
                     this.newFeedback.email = '';
                     this.newFeedback.message = '';
                 }
             },
-            addMilestone() {
-                if (this.newMilestone.title.trim() !== '' && this.newMilestone.description.trim() !== '') {
-                    this.courseModules.push({
+            addMilestone() 
+            {
+                if (this.newMilestone.title.trim() !== '' && this.newMilestone.description.trim() !== '') 
+                {
+                    this.courseModules.push
+                        ({
                         title: this.newMilestone.title,
                         description: this.newMilestone.description
-                    });
+                        });
                     this.newMilestone.title = '';
                     this.newMilestone.description = '';
                 }
             }
         },
-        watch: {
-            progressPercentage(value) {
+        watch: 
+        {
+            progressPercentage(value) 
+            {
                 if (value < 0) this.progressPercentage = 0;
                 if (value > 100) this.progressPercentage = 100;
             }
