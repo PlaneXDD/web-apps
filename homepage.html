@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker</title>
+    <link rel="stylesheet" type="text/css" href="styling.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Progress Tracker</h1>
+            <p>A Developer's Journey</p>
+        </header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#milestones">Milestones</a>
+            <a href="#skills">Skills Acquired</a>
+            <a href="#projects">Projects & Tasks</a>
+            <a href="#feedback">Feedback & Suggestions</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <section id="home">
+            <h2>Developer Information</h2>
+            <p>Name: <input type="text" v-model="developer.name"></p>
+            <p>Date of Birth: <input type="date" v-model="developer.dob"></p>
+            <p>Address: <input type="text" v-model="developer.address"></p>
+            <p>Course Progress: {{ progressPercentage }}%</p>
+            <input type="range" v-model="progressPercentage" min="0" max="100">
+            <progress :value="progressPercentage" max="100"></progress>
+            <button @click="saveDeveloperInfo">Save</button>
+        </section>
+
+        <section id="milestones">
+            <h2>Course Milestones</h2>
+            <div v-for="(module, index) in courseModules" :key="index">
+                <h3>{{ module.title }}</h3>
+                <p>{{ module.description }}</p>
+                <button @click="editMilestone(module)">Edit</button>
+            </div>
+            <div>
+                <h3>Add Milestone</h3>
+                <input type="text" v-model="newMilestone.title" placeholder="Milestone Title">
+                <textarea v-model="newMilestone.description" placeholder="Milestone Description"></textarea>
+                <button @click="addMilestone">+</button>
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>Skills Acquired</h2>
+            <div v-for="(skill, index) in skills" :key="index">
+                <p>{{ skill }}</p>
+                <button @click="editSkill(index)">Edit</button>
+            </div>
+            <div>
+                <h3>Add Skill</h3>
+                <input type="text" v-model="newSkill" placeholder="New Skill">
+                <button @click="addSkill">+</button>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects & Tasks</h2>
+            <div v-for="(project, index) in projects" :key="index">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+                <button @click="editProject(project)">Edit</button>
+            </div>
+            <div>
+                <h3>Add Project</h3>
+                <input type="text" v-model="newProject.title" placeholder="Project Title">
+                <textarea v-model="newProject.description" placeholder="Project Description"></textarea>
+                <button @click="addProject">+</button>
+            </div>
+        </section>
+
+        <section id="feedback">
+            <h2>Feedback & Suggestions</h2>
+            <div v-for="(feedbackItem, index) in feedbackItems" :key="index">
+                <p>{{ feedbackItem.name }} ({{ feedbackItem.email }})</p>
+                <p>{{ feedbackItem.message }}</p>
+                <button @click="editFeedback(index)">Edit</button>
+            </div>
+            <div>
+                <h3>Add Feedback</h3>
+                <input type="text" v-model="newFeedback.name" placeholder="Your Name">
+                <input type="email" v-model="newFeedback.email" placeholder="Your Email">
+                <textarea v-model="newFeedback.message" placeholder="Your Feedback"></textarea>
+                <button @click="addFeedback">+</button>
+            </div>
+        </section>
+        
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Phone: {{ contact.phone }}</p>
+            <p>Email: {{ contact.email }}</p>
+            <button @click="editContact">Edit</button>
+        </section>
+        
+
+        <button id="backToTop" @click="backToTop">Back to Top</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="scripts.js" defer></script>
+</body>
+</html>
